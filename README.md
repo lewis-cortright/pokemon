@@ -1,75 +1,56 @@
-# Nuxt Minimal Starter
+# Poké Dispatch
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Poké Dispatch is a Nuxt application for browsing Pokémon, searching the Pokédex, viewing type badges, and opening a profile page with animated sprites and base stats.
 
-## Setup
+The project was built as a front-end focused technical challenge using Nuxt, Vue, TypeScript, and the public PokeAPI.
 
-Make sure to install dependencies:
+## Live Demo
 
-```bash
-# npm
-npm install
+_Add deployed URL here once available._
 
-# pnpm
-pnpm install
+## Features
 
-# yarn
-yarn install
+- Pokémon list view
+- Search by Pokémon name
+- Type badges with type-specific styling
+- Pokémon profile/detail page
+- Animated Pokémon sprites
+- Base stat display with visual bars
+- Dark/light theme toggle
+- Responsive layout for desktop and mobile
+- Nuxt server API routes used as a thin backend-for-frontend layer over PokeAPI
 
-# bun
-bun install
-```
+## Tech Stack
 
-## Development Server
+- Nuxt
+- Vue 3
+- TypeScript
+- CSS variables
+- PokeAPI
 
-Start the development server on `http://localhost:3000`:
+## Project Structure
 
-```bash
-# npm
-npm run dev
+```txt
+components/
+  icons/
+    AppIcon.vue
+  ui/
+    AppCard.vue
+    AppPokemonStat.vue
+    AppSearch.vue
+    AppTypeBadge.vue
+    ThemeToggle.vue
 
-# pnpm
-pnpm dev
+pages/
+  index.vue
+  pokemon/[id].vue
 
-# yarn
-yarn dev
+server/
+  api/
+    pokemon/
+      index.get.ts
+      [id].get.ts
 
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+shared/
+  types/
+    pokemon.ts
