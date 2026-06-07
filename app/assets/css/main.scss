@@ -1,0 +1,71 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+@property --gradient-gold-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 135deg;
+}
+
+:root {
+  --font-size-base: 16px;
+  --font-size-xl: 24px;
+  --font-size-l: 20px;
+  --font-size-m: 16px;
+  --font-size-sm: 12px;
+  --font-size-xs: 8px;
+  --font-weight-light: 400;
+  --font-weight-normal: 600;
+  --font-weight-bold: 700;
+  --font-weight-bolder: 800;
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-text: #111827;
+  --color-muted: #64748b;
+  --color-border: #d7dce5;
+  --color-primary: #6366f1;
+  --color-info: #89a2ee;
+  --color-success: #74b174;
+  --color-warning: #e9c65e;
+  --color-danger: #d55d51;
+  --color-primary-hover: #4f46e5;
+  --color-primary-light: rgba(99, 102, 241, 0.14);
+
+  --shadow: 0 8px 24px rgba(15, 23, 42, 0.125);
+  --shadow-card-hover: 0 16px 36px rgba(15, 23, 42, 0.33);
+}
+
+@keyframes spin-gold {
+  from { --gradient-gold-angle: 135deg; }
+  to   { --gradient-gold-angle: 495deg; }
+}
+
+html.dark {
+  --color-bg: #0f172a;
+  --color-surface: #1e293b;
+  --color-text: #f8fafc;
+  --color-muted: #cbd5e1;
+  --color-border: #334155;
+  --color-primary: #818cf8;
+  --color-primary-hover: #a5b4fc;
+  --color-primary-light: rgba(129, 140, 248, 0.18);
+  --shadow: 0 8px 24px rgb(0 0 0 / 0.28);
+  --shadow-card-hover: 0 18px 42px rgb(0 0 0 / 0.42);
+}
