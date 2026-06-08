@@ -6,7 +6,7 @@ The project was built as a front-end focused technical challenge using Nuxt, Vue
 
 ## Live Demo
 
-_Add deployed URL here once available._
+https://pokedispatch.com/
 
 ## Features
 
