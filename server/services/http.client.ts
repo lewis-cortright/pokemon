@@ -6,12 +6,14 @@ import {
 
 export async function getPokemonList(
   event: H3Event,
-  limit = 60
+  limit = 60,
+  offset = 0
 ): Promise<PokemonPageData> {
   const config = useRuntimeConfig(event);
   return await $fetch<PokemonPageData>(`${config.pokeApiBaseURL}/pokemon`, {
     query: {
-      limit
+      limit,
+      offset
     }
   });
 }
