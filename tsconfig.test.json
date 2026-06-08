@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ESNext", "DOM"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "composite": true,
+    "types": ["vitest/globals"],
+    "baseUrl": ".",
+    "paths": {
+      "#shared/*": ["./shared/*"],
+      "#server/*": ["./server/*"],
+      "@/*": ["./app/*"],
+      "~/*": ["./app/*"],
+      "#components": ["./tests/__mocks__/nuxt-components.ts"],
+      "pokemon-list-handler": ["./server/api/pokemon/index.get.ts"],
+      "pokemon-id-handler": ["./server/api/pokemon/[id].get.ts"]
+    }
+  },
+  "include": [
+    "vitest.config.ts",
+    "tests/**/*.ts",
+    "shared/**/*.ts",
+    "server/**/*.ts",
+    "app/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
