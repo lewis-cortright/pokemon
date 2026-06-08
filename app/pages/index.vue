@@ -61,12 +61,13 @@ const filteredPokemon = computed(() => {
       </AppCard>
     </section>
     <button
+        class="btn-load-more"
         v-if="hasMore"
         type="button"
         :disabled="pending"
         @click="fetchPokemon"
     >
-      {{ pending ? 'Loading...' : 'Load more Pokémon' }}
+      {{ pending ? 'loading...' : 'Load more Pokémon' }}
     </button>
   </main>
 
@@ -76,6 +77,7 @@ const filteredPokemon = computed(() => {
   width: 80%;
   margin: 0 auto;
   padding: 3rem 0;
+  position: relative;
 
   .landing-header {
     display: flex;
@@ -113,6 +115,15 @@ const filteredPokemon = computed(() => {
   .multi-types {
     display: flex;
     gap: 0.1rem;
+  }
+  .btn-load-more {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: var(--color-primary);
+    color: var(--color-text);
+    padding: .5rem 1rem;
+    border-radius: 6px;
   }
 }
 
