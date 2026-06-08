@@ -3,16 +3,22 @@ import AppCard from "~/components/ui/AppCard.vue";
 import AppSearch from "~/components/ui/AppSearch.vue";
 import ThemeToggle from "~/components/ui/ThemeToggle.vue";
 import AppTypeBadge from "~/components/ui/AppTypeBadge.vue";
+import { usePokemonList } from "~/composables/usePokemonList";
 
 // reactive primitive
 const searchText = ref('');
 
 const {
-  data: pokemon
-} = await useFetch<PokemonDetails[]>('/api/pokemon', {
-  default: () => []
-});
+  pokemon,
+  pending,
+  error,
+  hasMore,
+  fetchPokemon,
+} = usePokemonList();
 
+if (!pokemon.value.length) {
+  await fetchPokemon();
+}
 const filteredPokemon = computed(() => {
   const search = searchText.value.trim().toLowerCase();
   if (!search) {
@@ -48,11 +54,20 @@ const filteredPokemon = computed(() => {
         <span :class="pokemon.types.length > 1 ? 'multi-types' : 'single-type'">
         <AppTypeBadge
             v-for="type of pokemon.types"
+            :key="type"
             :type="type"
         />
         </span>
       </AppCard>
     </section>
+    <button
+        v-if="hasMore"
+        type="button"
+        :disabled="pending"
+        @click="fetchPokemon"
+    >
+      {{ pending ? 'Loading...' : 'Load more Pokémon' }}
+    </button>
   </main>
 
 </template>
@@ -103,7 +118,7 @@ const filteredPokemon = computed(() => {
 
 
 @media (max-width: 768px) {
- .landing-page .landing-grid {
+  .landing-page .landing-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
