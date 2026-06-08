@@ -1,10 +1,42 @@
 <script setup lang="ts">
-const { theme, toggleTheme } = useTheme();
 import AppIcon from "~/components/icons/AppIcon.vue";
 
-const buttonLabel = computed(() =>
-    theme.value === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
-);
+const {
+  theme,
+  isThemeReady,
+  initializeTheme,
+  toggleTheme,
+} = useTheme();
+
+onMounted(() => {
+  initializeTheme();
+});
+
+const buttonLabel = computed(() => {
+  if (!isThemeReady.value) {
+    return 'Toggle color theme';
+  }
+
+  return theme.value === 'dark'
+      ? 'Switch to light mode'
+      : 'Switch to dark mode';
+});
+
+const iconName = computed(() => {
+  if (!isThemeReady.value) {
+    return 'moon';
+  }
+
+  return theme.value === 'dark' ? 'sun' : 'moon';
+});
+
+const buttonText = computed(() => {
+  if (!isThemeReady.value) {
+    return 'Theme';
+  }
+
+  return theme.value === 'dark' ? 'Light' : 'Dark';
+});
 </script>
 
 <template>
@@ -14,12 +46,10 @@ const buttonLabel = computed(() =>
       :aria-label="buttonLabel"
       @click="toggleTheme"
   >
-  <AppIcon
-    :name="theme === 'dark' ? 'sun' : 'moon'"
-  />
+    <AppIcon :name="iconName" />
 
     <span>
-      {{ theme === 'dark' ? 'Light' : 'Dark' }}
+      {{ buttonText }}
     </span>
   </button>
 </template>

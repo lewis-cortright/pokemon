@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { StyleValue } from 'vue';
-
 import moonIcon from '@/assets/icons/moon_icon.svg';
 import sunIcon from '@/assets/icons/sun_icon.svg';
 import backArrowIcon from '@/assets/icons/back_arrow_icon.svg';

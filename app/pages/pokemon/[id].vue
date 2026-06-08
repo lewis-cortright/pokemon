@@ -29,6 +29,7 @@ const {
           class="pokemon-type"
           v-for="type of pokemon.types"
           :type="type"
+          :key="type"
           :font-size="'font-size: var(--font-size-lg)'"
       />    <div>
       <span class="abilities-label">Abilities: </span>
